@@ -58,16 +58,6 @@
                 </a>
               </div>
             </div>
-            <!-- <button class="dropdown navbar-item is-tab">
-              Hey Alex <span class="icon"><i class="fa fa-caret-down"></i></span>
-              <ul class="dropdown-menu">
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="#">Settings</a></li>
-                <li class="seperator"></li>
-                <li><a href="#">Logout</a></li>
-              </ul>
-            </button> -->
             @endif
           </div>
         </div>

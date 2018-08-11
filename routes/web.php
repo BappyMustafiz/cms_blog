@@ -20,6 +20,7 @@ Auth::routes();
 Route::group(['prefix'=>'manage','as'=>'manage.', 'middleware' => 'role:superadministrator|administrator|editor|author|contributor'], function(){
     Route::get('/', ['as' => 'index', 'uses' => 'ManageController@index']);
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'ManageController@dashboard']);
+    Route::resource('/users', 'UserController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

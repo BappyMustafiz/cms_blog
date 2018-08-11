@@ -14,8 +14,9 @@ Vue.use(Buefy);
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component(Buefy.Checkbox.name, Buefy.Checkbox);
-var app = new Vue({
-  el: '#app',
-  data: {
-  }
-});
+Vue.component(Buefy.Radio.name, Buefy.Radio);
+// var app = new Vue({
+//   el: '#app',
+//   data: {
+//   }
+// });
