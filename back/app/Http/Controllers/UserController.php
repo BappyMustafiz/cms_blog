@@ -104,10 +104,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-      $this->validator($request);
+      $this->validate($request, [
+          'name' => 'required|max:255'
+        ]);
 
       $user = User::findOrFail($id);
-      return $user;
       $user->name = $request->name;
       $user->email = $request->email;
       if ($request->password_options == 'auto') {
