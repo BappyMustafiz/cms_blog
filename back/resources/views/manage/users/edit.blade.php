@@ -12,7 +12,7 @@
     <div class="columns">
       <div class="column">
         <form action="{{route('manage.users.update', $user->id)}}" method="POST">
-          {{method_field('PUT')}}
+          {{method_field('PATCH')}}
           {{csrf_field()}}
           <div class="field">
             <label for="name" class="label">Name:</label>
@@ -41,7 +41,7 @@
               </p>
             </div>
 
-          <button class="button is-primary">Edit User</button>
+          <button class="button is-primary">Update</button>
         </form>
       </div>
     </div>

@@ -39,12 +39,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-          'name' => 'required|max255',
-          'email' => 'required|email|unique:users'
-        ]);
 
-        if (Request::has('password') && !empty($request->password)) {
+        $this->validator($request);
+
+
+        if ( !empty($request->password)) {
           $password = trim($request->password);
         } else {
           $length = 10;
@@ -104,11 +103,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-        'name' => 'required|max255',
-        'email' => 'required|email|unique:users,email,'.$id
-      ]);
+
+      $this->validator($request);
+
       $user = User::findOrFail($id);
+      return $user;
       $user->name = $request->name;
       $user->email = $request->email;
       if ($request->password_options == 'auto') {
@@ -140,5 +139,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validator(Request $request)
+    {        
+        $this->validate($request, [
+          'name' => 'required|max:255',
+          'email' => 'required|email|unique:users'
+        ]);
     }
 }

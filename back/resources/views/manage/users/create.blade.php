@@ -10,6 +10,7 @@
   </div>
   <hr class="m-t-10">
   <form id="app" class="" action="{{route('manage.users.store')}}" method="post">
+    {{csrf_field()}}
     <div class="field">
       <label for="name" class="label">Name</label>
       <p class="control">
