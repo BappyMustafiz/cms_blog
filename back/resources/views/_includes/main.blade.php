@@ -15,7 +15,7 @@
       @else
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Hey Bappy
+          Hey {{ Auth::user()->name }}
         </a>
 
         <div class="navbar-dropdown">

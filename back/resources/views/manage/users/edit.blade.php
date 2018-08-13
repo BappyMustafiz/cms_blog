@@ -8,27 +8,25 @@
       </div>
     </div>
     <hr class="m-t-0">
-
-    <div class="columns">
-      <div class="column">
-        <form action="{{route('manage.users.update', $user->id)}}" method="POST">
-          {{method_field('PATCH')}}
-          {{csrf_field()}}
-          <div class="field">
-            <label for="name" class="label">Name:</label>
-            <p class="control">
-              <input type="text" class="input" name="name" id="name" value="{{$user->name}}">
-            </p>
-          </div>
-
-          <div class="field">
-            <label for="email" class="label">Email:</label>
-            <p class="control">
-              <input type="text" class="input" name="email" id="email" value="{{$user->email}}">
-            </p>
-          </div>
-
-          <div class="field">
+    
+    <form action="{{route('manage.users.update', $user->id)}}" method="POST">
+      {{method_field('PATCH')}}
+      {{csrf_field()}}
+      <div class="columns">
+        <div class="column">
+            <div class="field">
+              <label for="name" class="label">Name:</label>
+              <p class="control">
+                <input type="text" class="input" name="name" id="name" value="{{$user->name}}">
+              </p>
+            </div>
+            <div class="field">
+              <label for="email" class="label">Email:</label>
+              <p class="control">
+                <input type="text" class="input" name="email" id="email" value="{{$user->email}}">
+              </p>
+            </div>
+            <div class="field">
               <b-radio name="password_options" v-model="password_options" native-value="keep">Do Not Change Password</b-radio>
             </div>
             <div class="field">
@@ -40,12 +38,24 @@
                 <input type="text" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user" required>
               </p>
             </div>
-
-          <button class="button is-primary">Update</button>
-        </form>
+        </div><!--.col-->
+        <div class="column">
+          <label for="roles" class="label">Roles:</label>
+          <input type="hidden" name="roles" :value="rolesSelected" >
+          @foreach($roles as $role)
+            <div class="field">
+              <b-checkbox v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+            </div>
+          @endforeach
+        </div>
+      </div>  
+      <div class="columns">
+        <div class="column">
+          <hr>
+          <button class="button is-primary is-pulled-right" style="width: 250px;">Update</button>
+        </div>
       </div>
-    </div>
-
+    </form>
   </div> <!-- end of .flex-container -->
 @endsection
 
@@ -56,7 +66,8 @@
     var app = new Vue({
       el: '#app',
       data: {
-        password_options: 'keep'
+        password_options: 'keep',
+        rolesSelected:{!! $user->roles->pluck('id')!!}
       }
     });
 
