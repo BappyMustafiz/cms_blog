@@ -27,6 +27,7 @@ Route::group(['prefix'=>'manage','as'=>'manage.', 'middleware' => 'role:superadm
     Route::resource('/users', 'UserController');
     Route::resource('/permissions', 'PermissionController', ['except' => 'destroy']);
     Route::resource('/roles', 'RoleController', ['except' => 'destroy']);
+    Route::resource('/posts', 'PostsController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

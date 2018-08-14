@@ -31,7 +31,10 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->created_at->toFormattedDateString()}}</td>
-            <td><a class="button ls-outlined" href="{{route('manage.users.edit', $user->id)}}">Edit</a></td>
+            <td>
+              <a class="button ls-outlined" href="{{route('manage.users.show', $user->id)}}">View</a>
+              <a class="button ls-outlined" href="{{route('manage.users.edit', $user->id)}}">Edit</a>
+            </td>
           </tr>
           @endforeach
         </tbody>

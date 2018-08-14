@@ -12,7 +12,7 @@ import Buefy from 'buefy';
 
 Vue.use(Buefy);
 
-//Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('slugWidget', require('./components/slugWidget.vue'));
 Vue.component(Buefy.Checkbox.name, Buefy.Checkbox);
 Vue.component(Buefy.Radio.name, Buefy.Radio);
 // var app = new Vue({
@@ -20,3 +20,5 @@ Vue.component(Buefy.Radio.name, Buefy.Radio);
 //   data: {
 //   }
 // });
+// 
+require ('./manage')
